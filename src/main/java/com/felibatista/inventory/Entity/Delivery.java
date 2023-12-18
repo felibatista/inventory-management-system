@@ -2,8 +2,10 @@ package com.felibatista.inventory.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -20,6 +22,8 @@ public class Delivery {
     private Status status;
     private String notes;
     private Double discount;
+    @OneToMany
+    private List<DeliveryDetail> deliveryDetails;
 
     public Delivery() {
     }
@@ -71,6 +75,15 @@ public class Delivery {
     public void setDiscount(Double discount) {
         this.discount = discount;
     }
+
+    public List<DeliveryDetail> getDeliveryDetails() {
+        return deliveryDetails;
+    }
+
+    public void setDeliveryDetails(List<DeliveryDetail> deliveryDetails) {
+        this.deliveryDetails = deliveryDetails;
+    }
+
 
     @Override
     public boolean equals(Object o) {
