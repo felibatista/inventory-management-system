@@ -15,8 +15,16 @@ public class Inventory {
     private Integer minimumStockQuantity;
     private Integer reorderQuantity;
 
-
     public Inventory() {
+    }
+
+    public Inventory(Long id, Integer quantityAvailable, Integer quantityReserved, Integer maximumStockQuantity, Integer minimumStockQuantity, Integer reorderQuantity) {
+        this.id = id;
+        this.quantityAvailable = quantityAvailable;
+        this.quantityReserved = quantityReserved;
+        this.maximumStockQuantity = maximumStockQuantity;
+        this.minimumStockQuantity = minimumStockQuantity;
+        this.reorderQuantity = reorderQuantity;
     }
 
     public Long getId() {

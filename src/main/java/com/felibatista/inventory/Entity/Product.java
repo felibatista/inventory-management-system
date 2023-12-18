@@ -27,6 +27,21 @@ public class Product {
     public Product() {
     }
 
+    public Product(Long id, String productCode, String barCode, String name, String description, String category, Double packetWeight, Double packetHeight, Double packetWidth, Double packetDepth, boolean refrigerated, ArrayList<Inventory> inventories) {
+        this.id = id;
+        this.productCode = productCode;
+        this.barCode = barCode;
+        this.name = name;
+        this.description = description;
+        this.category = category;
+        this.packetWeight = packetWeight;
+        this.packetHeight = packetHeight;
+        this.packetWidth = packetWidth;
+        this.packetDepth = packetDepth;
+        this.refrigerated = refrigerated;
+        this.inventories = inventories;
+    }
+
     public Long getId() {
         return id;
     }
