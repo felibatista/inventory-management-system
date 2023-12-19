@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class Delivery {
-    public enum DeliveryStatus {
+public class Order {
+    public enum OrderStatus {
         PENDING,
         DELIVERED,
         CANCELLED
@@ -19,21 +19,19 @@ public class Delivery {
     @Id
     private Long id;
     private Date date;
-    private DeliveryStatus status;
+    private OrderStatus status;
     private String notes;
-    private Double discount;
     @OneToMany
-    private List<DeliveryDetail> deliveryDetails;
+    private List<OrderDetail> deliveryDetails;
 
-    public Delivery() {
+    public Order() {
     }
 
-    public Delivery(Long id, Date date, DeliveryStatus status, String notes, Double discount) {
+    public Order(Long id, Date date, OrderStatus status, String notes) {
         this.id = id;
         this.date = date;
         this.status = status;
         this.notes = notes;
-        this.discount = discount;
     }
 
     public Long getId() {
@@ -52,11 +50,11 @@ public class Delivery {
         this.date = date;
     }
 
-    public DeliveryStatus getStatus() {
+    public OrderStatus getStatus() {
         return status;
     }
 
-    public void setStatus(DeliveryStatus status) {
+    public void setStatus(OrderStatus status) {
         this.status = status;
     }
 
@@ -68,28 +66,19 @@ public class Delivery {
         this.notes = notes;
     }
 
-    public Double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(Double discount) {
-        this.discount = discount;
-    }
-
-    public List<DeliveryDetail> getDeliveryDetails() {
+    public List<OrderDetail> getDeliveryDetails() {
         return deliveryDetails;
     }
 
-    public void setDeliveryDetails(List<DeliveryDetail> deliveryDetails) {
+    public void setDeliveryDetails(List<OrderDetail> deliveryDetails) {
         this.deliveryDetails = deliveryDetails;
     }
-
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Delivery delivery = (Delivery) o;
+        Order delivery = (Order) o;
         return Objects.equals(id, delivery.id) && Objects.equals(date, delivery.date);
     }
 
@@ -105,7 +94,6 @@ public class Delivery {
                 ", date=" + date +
                 ", status=" + status +
                 ", notes='" + notes + '\'' +
-                ", discount=" + discount +
                 '}';
     }
 }
