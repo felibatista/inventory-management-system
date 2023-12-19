@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository customerRepository;
 
-    @Autowired
     public UserService(UserRepository customerRepository){
         this.customerRepository = customerRepository;
     }
@@ -19,14 +18,14 @@ public class UserService {
     }
 
     public User findById(long id){
-        return customerRepository.findById(id);
+        return getCustomerRepository().findById(id);
     }
 
     public Iterable<User> findAll(){
-        return customerRepository.findAll();
+        return getCustomerRepository().findAll();
     }
 
     public User findByEmail(String email){
-        return customerRepository.findByEmail(email).orElseThrow();
+        return getCustomerRepository().findByEmail(email).orElseThrow();
     }
 }

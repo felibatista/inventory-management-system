@@ -4,9 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class OrderDetail {
@@ -15,7 +13,7 @@ public class OrderDetail {
     private Integer quantity;
     private Date expectDate;
     @OneToMany
-    private List<Product> products;
+    private Set<Product> products = new HashSet<>();
 
     public OrderDetail() {
     }
@@ -50,11 +48,11 @@ public class OrderDetail {
         this.expectDate = expectDate;
     }
 
-    public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 

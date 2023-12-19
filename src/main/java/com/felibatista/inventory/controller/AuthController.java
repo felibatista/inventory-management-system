@@ -24,7 +24,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
@@ -86,7 +88,7 @@ public class AuthController {
                 encoder.encode(signUpRequest.getPassword()));
 
         List<String> strRoles = signUpRequest.getRole();
-        List<Role> roles = new ArrayList<>();
+        Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
                 Role userRole = roleRepository.findByName(Role.RoleType.ROLE_USER)

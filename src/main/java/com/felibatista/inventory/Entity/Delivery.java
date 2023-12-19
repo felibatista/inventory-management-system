@@ -4,9 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class Delivery {
@@ -23,7 +21,7 @@ public class Delivery {
     private String notes;
     private Double discount;
     @OneToMany
-    private List<DeliveryDetail> deliveryDetails;
+    private Set<DeliveryDetail> deliveryDetails = new HashSet<>();
 
     public Delivery() {
     }
@@ -76,11 +74,11 @@ public class Delivery {
         this.discount = discount;
     }
 
-    public List<DeliveryDetail> getDeliveryDetails() {
+    public Set<DeliveryDetail> getDeliveryDetails() {
         return deliveryDetails;
     }
 
-    public void setDeliveryDetails(List<DeliveryDetail> deliveryDetails) {
+    public void setDeliveryDetails(Set<DeliveryDetail> deliveryDetails) {
         this.deliveryDetails = deliveryDetails;
     }
 

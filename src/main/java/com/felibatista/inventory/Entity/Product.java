@@ -1,15 +1,16 @@
 package com.felibatista.inventory.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Product {
     @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String productCode;
     private String barCode;
@@ -22,13 +23,18 @@ public class Product {
     private Double packetDepth;
     private boolean refrigerated;
     @OneToMany
-    private ArrayList<Inventory> inventories;
+    private Set<Inventory> inventories = new HashSet<>();
 
     public Product() {
     }
 
-    public Product(Long id, String productCode, String barCode, String name, String description, String category, Double packetWeight, Double packetHeight, Double packetWidth, Double packetDepth, boolean refrigerated, ArrayList<Inventory> inventories) {
-        this.id = id;
+    public Product(String productCode, String barCode, String name){
+        this.productCode = productCode;
+        this.barCode = barCode;
+        this.name = name;
+    }
+
+    public Product(String productCode, String barCode, String name, String description, String category, Double packetWeight, Double packetHeight, Double packetWidth, Double packetDepth, boolean refrigerated, Set<Inventory> inventories) {
         this.productCode = productCode;
         this.barCode = barCode;
         this.name = name;
@@ -134,11 +140,11 @@ public class Product {
         this.refrigerated = refrigerated;
     }
 
-    public ArrayList<Inventory> getInventories() {
+    public Set<Inventory> getInventories() {
         return inventories;
     }
 
-    public void setInventories(ArrayList<Inventory> inventories) {
+    public void setInventories(Set<Inventory> inventories) {
         this.inventories = inventories;
     }
 

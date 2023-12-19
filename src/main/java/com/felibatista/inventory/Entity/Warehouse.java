@@ -3,9 +3,12 @@ package com.felibatista.inventory.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Warehouse {
@@ -14,7 +17,9 @@ public class Warehouse {
     private String name;
     private boolean refrigerated;
     @OneToMany
-    private List<Inventory> inventories;
+    private Set<Inventory> inventories = new HashSet<>();
+    @OneToOne
+    private Location location;
 
     public Warehouse() {
     }
@@ -47,6 +52,22 @@ public class Warehouse {
 
     public Long getId() {
         return id;
+    }
+
+    public Set<Inventory> getInventories() {
+        return inventories;
+    }
+
+    public void setInventories(Set<Inventory> inventories) {
+        this.inventories = inventories;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     @Override

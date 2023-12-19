@@ -7,6 +7,7 @@ import jakarta.persistence.OneToMany;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Order {
@@ -22,7 +23,7 @@ public class Order {
     private OrderStatus status;
     private String notes;
     @OneToMany
-    private List<OrderDetail> deliveryDetails;
+    private Set<OrderDetail> deliveryDetails;
 
     public Order() {
     }
@@ -66,11 +67,11 @@ public class Order {
         this.notes = notes;
     }
 
-    public List<OrderDetail> getDeliveryDetails() {
+    public Set<OrderDetail> getDeliveryDetails() {
         return deliveryDetails;
     }
 
-    public void setDeliveryDetails(List<OrderDetail> deliveryDetails) {
+    public void setDeliveryDetails(Set<OrderDetail> deliveryDetails) {
         this.deliveryDetails = deliveryDetails;
     }
 
