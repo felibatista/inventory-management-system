@@ -36,7 +36,7 @@ public class InventoryManagementSystemApplication {
 
             //seed dsta in product
             for (int i = 0; i < 30; i++) {
-                Product product = new Product("Product " + i, "A" + i, "Masitas");
+                Product product = new Product("Product " + i, "A" + i, 200.0);
                 productRepository.save(product);
             }
         };

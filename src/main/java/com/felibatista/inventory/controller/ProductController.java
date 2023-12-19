@@ -2,9 +2,10 @@ package com.felibatista.inventory.controller;
 
 import com.felibatista.inventory.entity.Product;
 import com.felibatista.inventory.service.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Optional;
 
@@ -50,5 +51,10 @@ public class ProductController {
         }
 
         return ResponseEntity.ok(product);
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<?> create(@Valid @RequestBody Product product) {
+        return ResponseEntity.ok(getProductService().getProductRepository().save(product));
     }
 }
