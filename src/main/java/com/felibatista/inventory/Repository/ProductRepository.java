@@ -1,7 +1,6 @@
-package com.felibatista.inventory.Repository;
+package com.felibatista.inventory.repository;
 
-import com.felibatista.inventory.Entity.Inventory;
-import com.felibatista.inventory.Entity.Product;
+import com.felibatista.inventory.entity.Product;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;

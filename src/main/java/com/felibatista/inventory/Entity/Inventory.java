@@ -1,4 +1,4 @@
-package com.felibatista.inventory.Entity;
+package com.felibatista.inventory.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
